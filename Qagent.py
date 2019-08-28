@@ -46,7 +46,6 @@ class NaiveAgent():
             self.qTable.append([])
             for a in range(0,5):
                 self.qTable[s].append(random.random())
-        #print (self.qTable)
         '''
         return self.qTable
 
@@ -148,7 +147,6 @@ class NaiveAgent():
                 if neZone.colliderect(obs['homeR'][i]):
                     currState[3] = 3
 
-        #return state array
         return currState
 
     def pickAction(self, reward, obs):
@@ -189,7 +187,6 @@ class NaiveAgent():
         else:
         	return self.NOOP
 
-        #return self.NOOP
         #Uncomment the following line to get random actions
         #return self.actions[np.random.randint(0,len(self.actions))]
 
@@ -212,7 +209,7 @@ while True:
     	p.reset_game()
        
     obs = game.getGameState()
-    #print (obs)
+
     action = agent.pickAction(reward, obs)
     reward = p.act(action)
-    #print game.score
+
