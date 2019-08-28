@@ -5,6 +5,7 @@ from pygame.constants import K_w,K_a,K_F15
 import random
 import pygame, sys
 import qTableData
+from itertools import product
 
 class NaiveAgent():
     def __init__(self, actions):
@@ -25,37 +26,16 @@ class NaiveAgent():
         #only done on the first time through
         self.firstTime = False
         #enumerate states/ store in list
-        count = 0
         stateArray = []
         #these will represent states
         # 0 = nothing is there
         # 1 = car is there
         # 2 = log/turtle is there
         # 3 = homeR is there
-        for i in range (0,3):
-            for j in range(0,4):
-                for k in range (0,4):
-                    for l in range(0,4):
-                        for m in range (0,4):
-                            for n in range(0,4):
-                                for o in range (0,4):
-                                    for p in range(0,4):
-                                        for q in range(0,4):
-                                        	state = [0]*9
-                                        	state[0] = i
-                                        	state[1] = j
-                                        	state[2] = k
-                                        	state[3] = l
-                                        	state[4] = m
-                                        	state[5] = n
-                                        	state[6] = o
-                                        	state[7] = p
-                                        	state[8] = q
-                                        	self.stateArray.append(state)
-                                            #print (count)
-                                            #print (self.stateArray[count])
-                                            #count += 1
-
+        states = product([0, 1, 2, 3], repeat = 9)
+        for state in list(states):
+            self.stateArray.append(state)
+                                            
         #uncomment the following line to run pretrained frog
         self.qTable = qTableData.qTableData
 
